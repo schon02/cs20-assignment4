@@ -1,0 +1,40 @@
+h1 {
+    color: rgb(238, 105, 16);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+h2 {
+    color:rgb(21, 21, 253); 
+}
+
+.orderButton {
+    background-color: rgb(21, 21, 253); 
+}
+
+.welcomeImage {
+    background-image: url(three_hotdogs.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 300px;
+}
+
+button {
+    background-color:rgb(238, 105, 16); 
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+
+  footer {
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    background-color: #d1d1d1;
+    color: #fff;
+}
