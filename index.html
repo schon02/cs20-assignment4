@@ -1,22 +1,119 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <link href="style.css" rel="stylesheet" />
+</head>
 <body>
 
-<p>Click the button to demonstrate the prompt box.</p>
+<div class="welcomeImage">
+</div>
 
-<button onclick="myFunction()">Try it</button>
+<h1>Joe's Hotdog Stand</h1>
+<h2>- Menu -</h2>
+<p>Hotdog: $3.75 <br> French Fries: $2.00 <br> Drink: 1.50 </p>
+<p>**Joe's Special: 10% discount on orders $20 or more!!!</p>
+<p>Click each button to input your desired amount of each menu item.</p>
 
-<p id="demo"></p>
+<button onclick="hotdogs()">Hotdogs</button>
+<button onclick="frenchfries()">French Fries</button>
+<button onclick="drinks()">Drinks</button>
 
-<script>
-function myFunction() {
-  var person = prompt("Please enter your name", "Harry Potter");
-  if (person != null) {
-    document.getElementById("demo").innerHTML =
-    "Hello " + person + "! How are you today?";
-  }
-}
-</script>
+<h3>Order Summary:</h3>
+
+<p id="hotdogs"></p>
+<p id="frenchfries"></p>
+<p id="drinks"></p>
+
+<label for="textfield">Subtotal:</label>
+<input type="text" name="textfield" id="textfield">
+<br>
+<br>
+<label for="textfield2">Discount:</label>
+<input type="text" name="textfield2" id="textfield2">
+<br>
+<p>Tax: 6.25%</p>
+<label for="textfield1">Total:</label>
+<input type="text1" name="textfield1" id="textfield1">
+<br>
+<br>
+
+<button class="orderButton" onclick="place_order()">Place Order</button>
+<br>
+<br>
 
 </body>
+
+<footer>
+    <p>© Joe's Hotdog Stand</p>
+</footer>
+
+<script language="javascript">
+
+var order = {
+  hotdogs: 0,
+  frenchfries: 0,
+  drinks: 0
+};
+var subtotal = 0;
+var discount = 0;
+var total = 0;
+
+function calc_subtotal() {
+    document.getElementById("textfield").value = subtotal;
+}
+
+function calc_discount() {
+    if (subtotal > 20) {
+        discount = (subtotal * .1).toFixed(2);
+    }
+    document.getElementById("textfield2").value = discount;
+}
+
+function calc_total() {
+    total = ((subtotal - discount) * 1.0625).toFixed(2);
+    document.getElementById("textfield1").value = total;
+}
+
+function calc_allvalues() {
+    calc_subtotal();
+    calc_discount();
+    calc_total();
+}
+
+function hotdogs() {
+  order.hotdogs = prompt("Please enter your desired amount of hotdogs", "0");
+  if (order.hotdogs != null) {
+        document.getElementById("hotdogs").innerHTML =
+        "Number of hotdogs: " + order.hotdogs + " (Price: $3.75 each)";
+        subtotal += (order.hotdogs * 3.75);
+        calc_allvalues();
+  }
+}
+
+function frenchfries() {
+    order.frenchfries = prompt("Please enter your desired amount of french fries", "0");
+    if (order.frenchfries != null) {
+        document.getElementById("frenchfries").innerHTML =
+        "Number of french fries: " + order.frenchfries + " (Price: $2.00 each)";
+        subtotal += (order.frenchfries * 2);
+        calc_allvalues();
+    }
+}
+
+function drinks() {
+    order.drinks = prompt("Please enter your desired amount of drinks", "0");
+    if (order.drinks != null) {
+        document.getElementById("drinks").innerHTML =
+                "Number of drinks: " + order.drinks + " (Price: $1.50 each)";
+        subtotal += (order.drinks * 1.5);
+        calc_allvalues();
+    }
+}
+
+function place_order() {
+    alert("Your order has been placed!");
+}
+
+</script>
+
 </html>
